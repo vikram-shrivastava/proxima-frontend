@@ -50,7 +50,7 @@ const Signup = () => {
                 className="text-center lg:text-left"
               >
                 <h1 className="text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400 mb-4">
-                  LeafLink
+                  Proxima
                 </h1>
                 <h2 className="text-2xl lg:text-3xl font-semibold text-white mb-4">Create Account</h2>
                 <p className="text-gray-400 text-lg mb-6">

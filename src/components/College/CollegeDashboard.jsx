@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import WalletComponent from "../Wallet/Wallet";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronDown, ChevronRight, Briefcase, Mail, Home, User, MapPin, Globe, GraduationCap } from "lucide-react";
+import WalletComponent from "../Wallet/Wallet";
 
 const CollegeDashboard = () => {
   const [expandedStudent, setExpandedStudent] = useState(null);
@@ -74,24 +73,24 @@ const CollegeDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-950 pt-20 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-green-500/20 rounded-full mix-blend-screen filter blur-3xl animate-float" />
-        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-green-400/20 rounded-full mix-blend-screen filter blur-3xl animate-float-delay" />
-        <div className="absolute bottom-0 left-1/3 w-88 h-88 bg-green-300/20 rounded-full mix-blend-screen filter blur-3xl animate-float-long" />
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-green-500/20 rounded-full mix-blend-screen blur-3xl animate-pulse" />
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-green-400/20 rounded-full mix-blend-screen blur-3xl animate-pulse delay-700" />
+        <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-green-300/20 rounded-full mix-blend-screen blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="container mx-auto px-4 py-8">
-        <Card className="mb-8 bg-gray-900/10 border-gray-800 shadow-xl backdrop-blur-2xl">
-          <CardHeader>
-            <CardTitle className="text-2xl text-green-500 flex items-center">
+        <div className="mb-8 rounded-xl bg-gray-900/10 border border-gray-800 shadow-xl backdrop-blur-2xl">
+          <div className="p-6 border-b border-gray-800">
+            <h1 className="text-2xl text-green-500 flex items-center">
               <GraduationCap className="mr-3 text-green-500" size={24} />
               {collegeProfile.name}
-              <div className='pl-10'>
+              <div className="pl-10">
                 <WalletComponent />
               </div>
-            </CardTitle>
-          </CardHeader>
+            </h1>
+          </div>
           
-          <CardContent>
+          <div className="p-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <div className="flex items-center text-gray-300 mb-2">
@@ -130,7 +129,7 @@ const CollegeDashboard = () => {
               {students.map((student, index) => (
                 <div key={index} className="border-b border-gray-800 last:border-b-0">
                   <div
-                    className="p-4 flex items-center justify-between cursor-pointer hover:bg-gray-800/50 transition-colors"
+                    className="p-4 flex items-center justify-between cursor-pointer hover:bg-gray-800/50 transition-colors duration-200"
                     onClick={() => setExpandedStudent(expandedStudent === index ? null : index)}
                   >
                     <div className="flex items-center space-x-4">
@@ -169,7 +168,7 @@ const CollegeDashboard = () => {
                         </thead>
                         <tbody className="divide-y divide-gray-800">
                           {student.applications.map((app, appIndex) => (
-                            <tr key={appIndex} className="hover:bg-gray-800/50 transition-colors">
+                            <tr key={appIndex} className="hover:bg-gray-800/50 transition-colors duration-200">
                               <td className="py-3 px-4 text-gray-100">
                                 <div className="flex items-center">
                                   <Briefcase size={14} className="mr-2 text-green-500" />
@@ -189,8 +188,8 @@ const CollegeDashboard = () => {
                 </div>
               ))}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   );

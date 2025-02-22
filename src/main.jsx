@@ -10,6 +10,12 @@ import AdminDashboard from "./components/Admin/AdminDashboard.jsx";
 import AnonymousForum from "./components/AnonymousForum/AnonymousForum.jsx";
 import Protected from "./components/Auth/Protected.jsx"
 import Home from "./components/Home/Home.jsx";
+import MentorSearchPage from "./components/mentor/MentorSearchPage.jsx";
+import MentorProfile from "./components/mentor/MentorProfile.jsx";
+import UserProfile from "./components/UserProfile/ProfileCard.jsx";
+import MentorDashboard from "./components/mentor/MentorDashboard.jsx";
+import EmployerDashboard from "./components/Employer/EmployerDashboard.jsx";
+import CollegeDashboard from "./components/College/CollegeDashboard.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,16 +37,40 @@ const router = createBrowserRouter([
       {
         path:"/admindashboard",
         element: 
-          <Protected>
+          // <Protected>
             <AdminDashboard/>
-            </Protected>,
+            // </Protected>,
       },
       {
         path:"/anonymousforum",
         element:
-          <Protected>
+          // <Protected>
         <AnonymousForum/>,
-        </Protected>,
+        // </Protected>,
+      },
+      {
+        path:"/mentors",
+        element:<MentorSearchPage/>
+      },
+      {
+        path:"/mentor-profile/:id",
+        element:<MentorProfile/>
+      },
+      {
+        path:"/profile",
+        element:<UserProfile/>  
+      },
+      {
+        path:"/mentordashboard",
+        element:<MentorDashboard/>
+      },
+      {
+        path:"/employerdashboard",
+        element:<EmployerDashboard/>
+      },
+      {
+        path:"/collegedashboard",
+        element:<CollegeDashboard/>
       }
     ],
   },
