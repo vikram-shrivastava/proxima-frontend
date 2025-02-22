@@ -284,7 +284,9 @@ const UserProfile = () => {
     const getProfile = async () => {
       try {
         // Simulating API call with dummy data
-        setProfile(dummyData);
+        const response =await apiClient.get(`${import.meta.env.VITE_BACKEND_BASE_URL}applicants/profile`);
+        console.log("API Response:", response.data); // Add this for debugging
+        setProfile(response.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching profile:", error);
@@ -295,13 +297,13 @@ const UserProfile = () => {
     getProfile();
   }, []);
 
-  useEffect(() => {
-    async function GetProfile() {
-      const AppllicantProfile= await apiClient.get (`${import.meta.env.VITE_BASE_URL}/applicants/profile`);
-      setProfile(AppllicantProfile.data);
-    }
-    GetProfile();
-  },[profile])
+  // useEffect(() => {
+  //   async function GetProfile() {
+  //     const AppllicantProfile= await apiClient.get (`${import.meta.env.VITE_BACKEND_BASE_URL}/applicants/profile`);
+  //     setProfile(AppllicantProfile.data);
+  //   }
+  //   GetProfile();
+  // },[profile])
 
   const handleRoleSelect = (role) => {
     setSelectedRole(role);

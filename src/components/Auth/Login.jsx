@@ -12,7 +12,7 @@ const Login = () => {
 
   const login = async ({ email, password }) => {
     try {
-      const response = await apiClient.post(`${import.meta.env.BASE_URL}/auth/login`, { email, password });
+      const response = await apiClient.post(`${import.meta.env.VITE_BACKEND_BASE_URL}auth/login`, { email, password });
       const accessToken = await response.data.data.accessToken;
       console.log("accessToken", accessToken);
       if (!accessToken) {
@@ -21,7 +21,7 @@ const Login = () => {
       }
       localStorage.setItem('accessToken', accessToken);
       if (accessToken) {
-        navigate('/');
+        navigate('/roles');
       }
     } catch (error) {
       console.error(error);

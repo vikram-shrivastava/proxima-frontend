@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import apiClient from './ApiClient';
+import { AuthContext } from './context/AuthContext.jsx';
 
 const Signup = () => {
   const { 
@@ -12,17 +13,25 @@ const Signup = () => {
   } = useForm();
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const auth = useContext(AuthContext);
+  const setUser = auth?.setUser;
+  console.log(import.meta.env.VITE_BACKEND_BASE_URL);
 
   const onSubmit = async (data) => {
     try {
       const response = await apiClient.post(
-        `${import.meta.env.REACT_APP_BASE_URL}/auth/signup`,
+        `/auth/signup`,
         data
       );
       
       if (response.status >= 200 && response.status < 300) {
+        // Save the user data from response to context
+        if (!setUser) {
+          setUser(response.data);
+        }
         navigate('/login');
       }
+
     } catch (err) {
       setError(err.response?.data?.message || "Failed to create account. Please try again.");
     }
