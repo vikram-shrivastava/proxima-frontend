@@ -351,7 +351,7 @@ const UserProfile = () => {
     jobApplications = [],
     user = {}
   } = profile || {};
-  console.log("Applicant ID:",applicantId)
+  // console.log("Applicant ID:",applicantId)
   const { 
     name = 'No name available',
     email = 'No email available',

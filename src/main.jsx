@@ -16,6 +16,11 @@ import UserProfile from "./components/UserProfile/ProfileCard.jsx";
 import MentorDashboard from "./components/mentor/MentorDashboard.jsx";
 import EmployerDashboard from "./components/Employer/EmployerDashboard.jsx";
 import CollegeDashboard from "./components/College/CollegeDashboard.jsx";
+import JobBoard from "./components/Jobs/JobBoard.jsx";
+import ChatInteractions from "./components/ChatInteractions/ChatInteractions.jsx";
+import JobDetails from "./components/Jobs/JobDetails.jsx";
+import JobPostingForm from "./components/Jobs/PostForm.jsx"
+import JobApplicationForm from "./components/Jobs/ApplyJob.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,7 +47,7 @@ const router = createBrowserRouter([
             // </Protected>,
       },
       {
-        path:"/anonymousforum",
+        path:"/forum",
         element:
           // <Protected>
         <AnonymousForum/>,
@@ -71,6 +76,26 @@ const router = createBrowserRouter([
       {
         path:"/collegedashboard",
         element:<CollegeDashboard/>
+      },
+      {
+        path:"/jobs",
+        element:<JobBoard/>
+      },
+      {
+        path:"/chat",
+        element:<ChatInteractions/>
+      },
+      {
+        path:"/jobs/:jobid",
+        element:<JobDetails/>
+      },
+      {
+        path:"/apply/:jobid",
+        element:<JobApplicationForm/>
+      },
+      {
+        path:"/addJob",
+        element:<JobPostingForm/>
       }
     ],
   },
