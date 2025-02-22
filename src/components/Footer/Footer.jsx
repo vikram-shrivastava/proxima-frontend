@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Leaf } from 'lucide-react';
-
+import Logo from './Logo.png'
 export default function Footer() {
     return (
         <footer className="relative bg-gray-950/95 border-t border-emerald-900/30">
@@ -17,8 +17,8 @@ export default function Footer() {
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
                         <Link to="/" className="flex items-center space-x-2">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center">
-                                <Leaf className="w-6 h-6 text-white" />
+                            <div className="w-12 h-12 rounded-lg  flex items-center justify-center">
+                                 <img src={Logo} alt="logo" className='w-12 h-12' />
                             </div>
                             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-emerald-400">
                                 Proxima

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Leaf, ChevronDown, MessageSquare, Users } from 'lucide-react';
-
+import Logo from './Logo.png'
 export default function ModernNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -89,10 +89,10 @@ export default function ModernNavbar() {
           <div className="flex items-center">
             <Link to="/" className="group relative">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center transform group-hover:scale-105 transition-all duration-300">
-                  <Leaf className="w-5 h-5 text-white" />
+                <div className="w-12 h-12  flex items-center justify-center transform group-hover:scale-105 transition-all duration-300">
+                  <img src={Logo} alt="logo" className='w-12 h-12' />
                 </div>
-                <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 tracking-tight group-hover:from-white group-hover:to-emerald-200 transition-all duration-300">
+                <span className="text-2xl font-bold bg-clip-text text-transparent  bg-clip-text bg-gradient-to-r from-white to-emerald-300 tracking-tight group-hover:from-white group-hover:to-emerald-200 transition-all duration-300">
                   Proxima
                 </span>
               </div>
