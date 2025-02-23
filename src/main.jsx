@@ -22,6 +22,7 @@ import JobDetails from "./components/Jobs/JobDetails.jsx";
 import JobPostingForm from "./components/Jobs/PostForm.jsx"
 import JobApplicationForm from "./components/Jobs/ApplyJob.jsx";
 import RoleSelector from "./components/Auth/RoleSelector.jsx";
+import ExamPortal from "./components/ExamPortal/Portal.jsx";
 import { AuthProvider } from "./components/Auth/context/AuthContext.jsx";
 const router = createBrowserRouter([
   {
@@ -102,6 +103,9 @@ const router = createBrowserRouter([
       {
         path:"/roles",
         element:<RoleSelector/>
+      } , {
+        path:"/exam",
+        element:<ExamPortal/>
       }
     ],
   },
