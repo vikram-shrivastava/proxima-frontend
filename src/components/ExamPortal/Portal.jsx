@@ -1,3 +1,4 @@
+// src/components/ExamPortal/Portal.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { io } from "socket.io-client";
 
@@ -26,22 +27,40 @@ const ExamPortal = () => {
   // Sample questions
   const questions = [
     {
-      id: 1,
-      question: "What is the capital of France?",
-      options: ["London", "Berlin", "Paris", "Madrid"],
-      correctAnswer: 2
+      id: "Q1",
+      difficulty: "Medium",
+      story: "You're a software developer on a team tasked with creating a new e-commerce website. The initial design calls for a simple, static site using HTML, CSS, and basic JavaScript. However, the client now wants a dynamic, interactive shopping cart that updates in real-time without requiring page reloads. The cart needs to persist data even if the user closes the browser, and should integrate with a backend payment gateway. Your team has decided to use React for the front-end and a Python-based RESTful API for the backend. The database is a PostgreSQL instance.",
+      question: "Based on this change in requirements, what are the initial steps you would take to implement the dynamic shopping cart functionality using React and a Python/PostgreSQL backend, focusing specifically on the front-end integration?",
+      options: [
+        { text: "Start by designing the database schema for the shopping cart data in PostgreSQL, then write the Python API endpoints.", correct: false },
+        { text: "Immediately begin coding the React components for the shopping cart, focusing on the user interface and basic interactions. Then, gradually integrate with the backend API.", correct: false },
+        { text: "Plan the API endpoints required for the shopping cart in Python, define the data structures, and then build the React components to interact with those endpoints, ensuring proper data handling and state management.", correct: true },
+        { text: "Use a pre-built e-commerce solution, minimizing development time.", correct: false }
+      ]
     },
     {
-      id: 2,
-      question: "Which programming language is React built with?",
-      options: ["Python", "JavaScript", "Java", "C++"],
-      correctAnswer: 1
+      id: "Q2",
+      difficulty: "Hard",
+      story: "Same story as Q1. You've successfully implemented the basic shopping cart functionality. Now, the client wants to add features for user authentication and authorization. They also want to implement a system for tracking user browsing history for personalized recommendations. The system should be secure and compliant with relevant data privacy regulations.",
+      question: "How would you design and implement user authentication and authorization, considering security best practices and data privacy regulations? Outline the key architectural considerations and technologies you'd choose.",
+      options: [
+        { text: "Use basic session-based authentication and store user data directly in the database without encryption.", correct: false },
+        { text: "Implement OAuth 2.0 for authentication and use JWT (JSON Web Tokens) for authorization, storing sensitive data securely using encryption and adhering to relevant data privacy regulations.", correct: true },
+        { text: "Store passwords in plain text in the database for ease of access.", correct: false },
+        { text: "Ignore data privacy regulations and use user data however is convenient.", correct: false }
+      ]
     },
     {
-      id: 3,
-      question: "What is 2 + 2?",
-      options: ["3", "4", "5", "6"],
-      correctAnswer: 1
+      id: "Q3",
+      difficulty: "Medium",
+      story: "Same story as Q1 and Q2. The website is now live. However, the team is receiving reports of slow response times, especially during peak hours. The client wants to improve the website's performance and scalability.",
+      question: "What steps would you take to diagnose and resolve the performance issues, ensuring the website can handle increased traffic and maintain responsiveness?",
+      options: [
+        { text: "Ignore the performance issues and hope they go away.", correct: false },
+        { text: "Add more servers without optimizing the code.", correct: false },
+        { text: "Use performance monitoring tools to identify bottlenecks, optimize database queries, implement caching strategies, and potentially explore load balancing and scaling solutions.", correct: true },
+        { text: "Rewrite the entire website from scratch.", correct: false }
+      ]
     }
   ];
 
@@ -194,7 +213,7 @@ const ExamPortal = () => {
 
   const handleSubmit = () => {
     let correctAnswers = questions.reduce((count, question, index) => 
-      selectedAnswers[index] === question.correctAnswer ? count + 1 : count,
+      selectedAnswers[index] === question.options.findIndex(option => option.correct) ? count + 1 : count,
       0
     );
     setScore((correctAnswers / questions.length) * 100);
@@ -282,8 +301,8 @@ const ExamPortal = () => {
             <div className="rounded-lg shadow-lg p-6 bg-white/5 backdrop-blur-xl text-white">
               {examStatus === 'not-started' && (
                 <div className="text-center">
-                  <h2 className="text-xl font-bold mb-4">JAVA skill assessment</h2>
-                  <p className="mb-4">You have 10 minutes to complete this exam. Webcam monitoring and nearby device monitoring will be enabled.</p>
+                  <h2 className="text-xl font-bold mb-4">PYTHON skill assessment</h2>
+                  <p className=" mb-4">You have 10 minutes to complete this exam. Webcam monitoring and nearby device monitoring will be enabled.</p>
                   <button
                     onClick={() => {
                       console.log("Exam started");
@@ -302,8 +321,11 @@ const ExamPortal = () => {
                     <h3 className="text-lg font-semibold mb-4">
                       Question {currentQuestion + 1} of {questions.length}
                     </h3>
-                    <p className="mb-4">{questions[currentQuestion].question}</p>
-                    <div className="space-y-3">
+                    <div className="mb-4" style={{ userSelect: 'none' }} onContextMenu={(e) => e.preventDefault()}>
+                      <strong>Story:</strong> {questions[currentQuestion].story}
+                    </div>
+                    <p className="mb-4" style={{ userSelect: 'none' }} onContextMenu={(e) => e.preventDefault()}>{questions[currentQuestion].question}</p>
+                    <div className="space-y-3" style={{ userSelect: 'none' }} onContextMenu={(e) => e.preventDefault()}>
                       {questions[currentQuestion].options.map((option, index) => (
                         <label
                           key={index}
@@ -323,7 +345,7 @@ const ExamPortal = () => {
                             })}
                             className="mr-3"
                           />
-                          {option}
+                          {option.text}
                         </label>
                       ))}
                     </div>
