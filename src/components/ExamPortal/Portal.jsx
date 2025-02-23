@@ -8,6 +8,7 @@ const ExamPortal = () => {
   const [examStatus, setExamStatus] = useState('not-started');
   const [score, setScore] = useState(0);
   const [warningCount, setWarningCount] = useState(0);
+  const [warningOverlay, setWarningOverlay] = useState(false);
   
   // Webcam states
   const [imageSrc, setImageSrc] = useState("");
@@ -147,48 +148,6 @@ const ExamPortal = () => {
     return () => clearInterval(timer);
   }, [examStatus]);
 
-  const showWarning = (count) => {
-    // Remove any existing warning overlay
-    const existingOverlay = document.getElementById('warning-overlay');
-    if (existingOverlay) {
-      document.body.removeChild(existingOverlay);
-    }
-
-    const overlay = document.createElement('div');
-    overlay.id = 'warning-overlay';
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-    overlay.style.backdropFilter = 'blur(8px)';
-    overlay.style.zIndex = '9999';
-    overlay.style.display = 'flex';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-
-    const warningText = document.createElement('div');
-    warningText.textContent = `Focus lost! Warning ${count} of 3`;
-    warningText.style.color = 'red';
-    warningText.style.fontSize = '24px';
-    overlay.appendChild(warningText);
-
-    document.body.appendChild(overlay);
-
-    // Clear any existing timeout
-    if (warningTimeoutRef.current) {
-      clearTimeout(warningTimeoutRef.current);
-    }
-
-    // Set new timeout to remove warning
-    warningTimeoutRef.current = setTimeout(() => {
-      if (document.body.contains(overlay)) {
-        document.body.removeChild(overlay);
-      }
-    }, 2000);
-  };
-
   // Track focus loss
   useEffect(() => {
     const FOCUS_LOSS_THRESHOLD = 5000; // 5 seconds
@@ -197,8 +156,7 @@ const ExamPortal = () => {
     const handleFocusLoss = () => {
       const newWarningCount = warningCount + 1;
       setWarningCount(newWarningCount);
-      showWarning(newWarningCount);
-
+      
       if (newWarningCount >= 3) {
         // Only submit if the exam is still in progress
         if (examStatus === 'in-progress') {
@@ -234,8 +192,7 @@ const ExamPortal = () => {
     };
   }, [focusStatus, examStatus, warningCount]);
 
-  // In handleSubmit function:
-const handleSubmit = () => {
+  const handleSubmit = () => {
     let correctAnswers = questions.reduce((count, question, index) => 
       selectedAnswers[index] === question.correctAnswer ? count + 1 : count,
       0
@@ -256,38 +213,6 @@ const handleSubmit = () => {
     setExamStatus('completed');
     console.log("Exam submitted. Score:", (correctAnswers / questions.length) * 100);
   };
-  
-  // In the webcam initialization useEffect cleanup:
-  useEffect(() => {
-    let frameInterval;
-  
-    const initializeWebcam = async () => { /* ... */ };
-  
-    if (examStatus === 'in-progress') {
-      initializeWebcam();
-      setWarningCount(0);
-    }
-  
-    return () => {
-      clearInterval(frameInterval);
-      if (streamRef.current) {
-        streamRef.current.getTracks().forEach(track => track.stop());
-      }
-      if (socketRef.current) {
-        socketRef.current.disconnect();
-      }
-      // Cleanup overlay
-      const existingOverlay = document.getElementById('warning-overlay');
-      if (existingOverlay) {
-        document.body.removeChild(existingOverlay);
-      }
-      // Clear timeout
-      if (warningTimeoutRef.current) {
-        clearTimeout(warningTimeoutRef.current);
-        warningTimeoutRef.current = null;
-      }
-    };
-  }, [examStatus]);
 
   return (
     <div className="pt-24 min-h-screen bg-gray-950 overflow-hidden">
