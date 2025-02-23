@@ -122,7 +122,7 @@ const JobApplicationForm = () => {
               <input
                 type="file"
                 accept=".pdf,.doc,.docx"
-                className="w-full px-4 py-3 bg-white bg-opacity-5 rounded-xl text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500 border border-white border-opacity-10"
+                className="w-full px-4 py-3 bg-white bg-opacity-5 rounded-xl text-dark placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500 border border-white border-opacity-10"
               />
             </div>
           </motion.div>
@@ -142,7 +142,7 @@ const JobApplicationForm = () => {
                 onChange={(e) => setCurrentSkill(e.target.value)}
                 onKeyPress={handleSkillKeyPress}
                 placeholder="Add a skill"
-                className="flex-1 px-4 py-3 bg-white bg-opacity-5 rounded-xl text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500 border border-white border-opacity-10"
+                className="flex-1 px-4 py-3 bg-white bg-opacity-5 rounded-xl text-dark placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500 border border-white border-opacity-10"
               />
               <motion.button
                 variants={buttonVariants}
@@ -167,7 +167,7 @@ const JobApplicationForm = () => {
                     animate="animate"
                     exit="exit"
                     layout
-                    className="px-3 py-1 bg-white bg-opacity-10 rounded-full text-white text-sm flex items-center gap-1"
+                    className="px-3 py-1 bg-white bg-opacity-10 rounded-full text-dark text-sm flex items-center gap-1"
                   >
                     {skill}
                     <motion.button
@@ -200,7 +200,7 @@ const JobApplicationForm = () => {
                 onChange={(e) => setCurrentLocation(e.target.value)}
                 onKeyPress={handleLocationKeyPress}
                 placeholder="Add a location"
-                className="flex-1 px-4 py-3 bg-white bg-opacity-5 rounded-xl text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500 border border-white border-opacity-10"
+                className="flex-1 px-4 py-3 bg-white bg-opacity-5 rounded-xl text-dark placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500 border border-white border-opacity-10"
               />
               <motion.button
                 variants={buttonVariants}
@@ -210,7 +210,7 @@ const JobApplicationForm = () => {
                 onClick={addLocation}
                 className="p-3 bg-blue-500 hover:bg-blue-600 rounded-xl transition-colors"
               >
-                <Plus className="w-5 h-5 text-white" />
+                <Plus className="w-5 h-5 text-dark" />
               </motion.button>
             </div>
 
@@ -225,7 +225,7 @@ const JobApplicationForm = () => {
                     animate="animate"
                     exit="exit"
                     layout
-                    className="px-3 py-1 bg-white bg-opacity-10 rounded-full text-white text-sm flex items-center gap-1"
+                    className="px-3 py-1 bg-white bg-opacity-10 rounded-full text-dark text-sm flex items-center gap-1"
                   >
                     {location}
                     <motion.button
@@ -251,7 +251,7 @@ const JobApplicationForm = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl hover:opacity-90 transition-opacity"
+            className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-dark font-medium rounded-xl hover:opacity-90 transition-opacity"
           >
             Submit Application
           </motion.button>
