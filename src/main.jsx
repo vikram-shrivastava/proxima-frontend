@@ -22,6 +22,7 @@ import JobDetails from "./components/Jobs/JobDetails.jsx";
 import JobPostingForm from "./components/Jobs/PostForm.jsx"
 import JobApplicationForm from "./components/Jobs/ApplyJob.jsx";
 import RoleSelector from "./components/Auth/RoleSelector.jsx";
+import { AuthProvider } from "./components/Auth/context/AuthContext.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -108,6 +109,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

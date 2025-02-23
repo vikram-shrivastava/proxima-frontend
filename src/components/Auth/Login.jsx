@@ -1,27 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
-import apiClient from './ApiClient';
+import { AuthContext } from './context/AuthContext'; // Import AuthContext
 
 const Login = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
+  const { login } = useContext(AuthContext); // Use login from AuthContext
   const [error, setError] = useState("");
 
-  const login = async ({ email, password }) => {
+  const onSubmit = async ({ email, password }) => {
     try {
-      const response = await apiClient.post(`${import.meta.env.VITE_BACKEND_BASE_URL}auth/login`, { email, password });
-      const accessToken = await response.data.data.accessToken;
-      console.log("accessToken", accessToken);
-      if (!accessToken) {
-        setError("Invalid email or password");
-        navigate('/login');
-      }
-      localStorage.setItem('accessToken', accessToken);
-      if (accessToken) {
-        navigate('/roles');
+      const response = await login(email, password); // Call AuthContext login function
+      if (response?.data?.accessToken) {
+        navigate('/roles'); // Redirect on successful login
       }
     } catch (error) {
       console.error(error);
@@ -31,7 +24,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Updated blob colors to green */}
+      {/* Background effect */}
       <div className="absolute -left-4 w-96 h-96 bg-green-500/30 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob" />
       <div className="absolute -right-4 w-96 h-96 bg-emerald-500/30 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob animation-delay-2000" />
 
@@ -76,7 +69,7 @@ const Login = () => {
                 </motion.p>
               )}
 
-              <form onSubmit={handleSubmit(login)} className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="space-y-2">
                   <label className="text-gray-300 text-sm font-medium">Email</label>
                   <input

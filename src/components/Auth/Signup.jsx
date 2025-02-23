@@ -2,8 +2,9 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
-import apiClient from './ApiClient';
-import { AuthContext } from './context/AuthContext.jsx';
+import axios from 'axios';
+import { AuthContext } from './context/AuthContext'; // Import AuthContext
+
 
 const Signup = () => {
   const { 
@@ -13,23 +14,16 @@ const Signup = () => {
   } = useForm();
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const auth = useContext(AuthContext);
-  const setUser = auth?.setUser;
+  const { signup } = useContext(AuthContext);
   console.log(import.meta.env.VITE_BACKEND_BASE_URL);
 
   const onSubmit = async (data) => {
     try {
-      const response = await apiClient.post(
-        `/auth/signup`,
-        data
-      );
+      const response = await signup(data)
+      console.log(response.data);
       
-      if (response.status >= 200 && response.status < 300) {
-        // Save the user data from response to context
-        if (!setUser) {
-          setUser(response.data);
-        }
-        navigate('/login');
+      if (response?.data) {
+        navigate('/login'); // Redirect on successful login
       }
 
     } catch (err) {

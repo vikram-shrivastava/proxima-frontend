@@ -18,9 +18,12 @@ export default function ModernNavbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const logout = () => {
+  const logout = async() => {
     localStorage.removeItem('accessToken');
-    navigate('/login');
+    const res=await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}auth/logout`);
+    if(res){
+      navigate('/login');
+    }
     // logout logic here
   };
 

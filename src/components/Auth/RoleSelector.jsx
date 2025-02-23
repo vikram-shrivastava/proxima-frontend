@@ -13,9 +13,11 @@ import apiClient from './ApiClient';
 const RoleSelector = () => {
   const [selectedRole, setSelectedRole] = useState(null);
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const  auth  = useContext(AuthContext);
+  const user=auth?.user;
+  console.log("user"  , auth);
+
   const roles = [
-    { id: 'applicant', title: 'Applicant', icon: User, description: 'Job seeker' },
     { id: 'employer', title: 'Employer', icon: Briefcase, description: 'Hiring manager' },
     { id: 'student', title: 'Student', icon: GraduationCap, description: 'Learning path' },
     { id: 'college', title: 'College', icon: Building2, description: 'Institution' },
@@ -25,7 +27,7 @@ const RoleSelector = () => {
   const handleClick = async (roleId) => {
     setSelectedRole(roleId);
 
-    const appendUserId = roleId === "student" || roleId === "applicant" ? `${user.id}` : "";
+    const appendUserId = roleId === "student"  ? `/${user.id}` : "";
     const apiUrl = `${import.meta.env.VITE_BACKEND_BASE_URL}users/request/${roleId}${appendUserId}`;
     console.log("apiUrl", apiUrl);
     try {
