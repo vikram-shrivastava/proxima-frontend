@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}auth/signup`, data);
       console.log(response.data);
-      setUser(response.data.data);
+      setUser(response.data);
       return response.data;
     } catch (error) {
       throw error;

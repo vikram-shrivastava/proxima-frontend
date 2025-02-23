@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         element: 
           // <Protected>
             <AdminDashboard/>
-            // </Protected>,
+          // </Protected>,
       },
       {
         path:"/forum",
@@ -66,7 +66,8 @@ const router = createBrowserRouter([
       },
       {
         path:"/profile",
-        element:<UserProfile/>  
+        element:
+          <UserProfile/> 
       },
       {
         path:"/mentordashboard",
@@ -94,11 +95,17 @@ const router = createBrowserRouter([
       },
       {
         path:"/apply/:jobid",
-        element:<JobApplicationForm/>
+        element:
+        // <Protected>
+          <JobApplicationForm/>
+        // </Protected>
       },
       {
         path:"/addJob",
-        element:<JobPostingForm/>
+        element:
+        // <Protected>
+        <JobPostingForm/>
+        // </Protected>
       },
       {
         path:"/roles",

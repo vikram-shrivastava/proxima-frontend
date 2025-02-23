@@ -27,7 +27,7 @@ const RoleSelector = () => {
   const handleClick = async (roleId) => {
     setSelectedRole(roleId);
 
-    const appendUserId = roleId === "student"  ? `/${user.id}` : "";
+    const appendUserId = roleId === "student"  ? `/${user.data.id}` : "";
     const apiUrl = `${import.meta.env.VITE_BACKEND_BASE_URL}users/request/${roleId}${appendUserId}`;
     console.log("apiUrl", apiUrl);
     try {

@@ -126,16 +126,16 @@ const EmployerDashboard = () => {
     // }
     // GetJobs()
     const jobTitles = [
-      "Senior Frontend Developer",
-      "Backend Engineer",
-      "UI/UX Designer",
+      "Software Engineer",
+      "Data Analyst",
+      "Marketing Manager",
       "Product Manager",
-      "DevOps Engineer",
-      "Full Stack Developer",
-      "Data Scientist",
-      "Mobile App Developer",
-      "QA Engineer",
-      "Technical Writer",
+      "UX/UI Designer",
+      "HR Specialist",
+      "Financial Analyst",
+      "Customer Support Lead",
+      "Network Administrator",
+      "Sales Executive",
     ];
 
     const dummyJobs = Array.from({ length: 10 }, (_, index) => ({

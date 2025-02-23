@@ -149,10 +149,10 @@ const MentorSearchPage = () => {
     const fetchMentors = async () => {
       setIsLoading(true);
       try {
-        const response = await apiClient.get("/public/mentors");
-        const mentorsData = response.data.data.content;
-        setMentors(mentorsData);
-        setFilteredMentors(mentorsData);
+        // const response = await apiClient.get("/public/mentors");
+        // const mentorsData = response.data.data.content;
+        setMentors(dummyData);
+        setFilteredMentors(dummyData);
         setIsLoading(false);
       } catch (err) {
         setError("Failed to fetch mentors. Please try again later.");

@@ -51,7 +51,7 @@ const RoleModal = ({ isOpen, onClose, role ,id}) => {
     console.log("Form submitted:", formData);
     if(role==="mentor"){
       try {
-          const response = await apiClient.post(`applicants/request/mentor` , formData);
+          const response = await apiClient.post(`users/request/mentor` , formData);
           console.log("API Response:", response.data); // Add this for debugging
           if(response.data){
             console.log("Mentor added successfully");
@@ -62,7 +62,7 @@ const RoleModal = ({ isOpen, onClose, role ,id}) => {
     }
     else if(role==="employer"){
       try {
-          const response = await apiClient.post(`applicants/request/employer` , formData);
+          const response = await apiClient.post(`users/request/employer` , formData);
           console.log("API Response:", response.data); // Add this for debugging
           if(response.data){
             console.log("Employer added successfully");
@@ -234,7 +234,7 @@ const UserProfile = () => {
         user: {
           name: "Jane Smith",
           email: "jane.smith@example.com",
-          roles: ["Applicant", "Employer"],
+          roles: ["Applicant"],
           profilePicture: "/api/placeholder/150/150",
           joinedDate: "2023-11-15",
           lastActive: "2024-01-21"
@@ -284,9 +284,9 @@ const UserProfile = () => {
     const getProfile = async () => {
       try {
         // Simulating API call with dummy data
-        const response =await apiClient.get(`${import.meta.env.VITE_BACKEND_BASE_URL}applicants/profile`);
-        console.log("API Response:", response.data); // Add this for debugging
-        setProfile(response.data);
+        // const response =await apiClient.get(`${import.meta.env.VITE_BACKEND_BASE_URL}applicants/profile`);
+        // console.log("API Response:", response.data); // Add this for debugging
+        setProfile(dummyData.applicants[0]);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching profile:", error);
@@ -345,7 +345,7 @@ const UserProfile = () => {
   }
 
   // Destructure with default values for all properties
-  console.log("Profile:", profile); // Add this for debugging
+  // console.log("Profile:", profile); // Add this for debugging
   const {
     applicantId = '',
     skills = [],
@@ -456,27 +456,6 @@ const UserProfile = () => {
                   </div>
                   
                 </div>
-                {roles.length >1 && (
-                    <div className="flex">
-                    {roles.map((roleItem, index) =>(
-                      <div key={index} className="bg-white/5 rounded-xl pt-2 pb-2 border border-white/10 w-2/4 m-4">
-                      {roleItem === "Mentor" && (
-                        <button onClick={() => handleMentorRole("mentor")}>
-                          Go to Mentor Profile
-                        </button>
-                      )}
-                      {
-                        roleItem ==="Employer" && (
-                          <button onClick={() => handleEmployerRole("employer")}>
-                            Go to Employer Profile
-                          </button>
-                      )}  
-                      
-                    </div>
-                    ))}
-                    </div>
-                )}
-                
               </div>
             </div>
 

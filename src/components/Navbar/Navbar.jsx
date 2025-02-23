@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Leaf, ChevronDown, MessageSquare, Users } from 'lucide-react';
 import Logo from './Logo.png'
+import axios from 'axios';
 export default function ModernNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

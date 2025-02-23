@@ -67,6 +67,7 @@ const AdminDashboard = () => {
   const [error, setError] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [allusers, setAllUsers] = useState(0);
 
   // Fetch admin data on component mount
   useEffect(() => {
@@ -112,7 +113,9 @@ const AdminDashboard = () => {
       });
     */
   }, []);
-
+  const getallusers=()=>{
+    
+  }
   if (loading) {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">

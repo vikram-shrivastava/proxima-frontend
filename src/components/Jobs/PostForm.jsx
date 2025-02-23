@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, X } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 const JobPostingForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -33,6 +34,7 @@ const JobPostingForm = () => {
           jobStatus: 'OPEN',
           company: ''
         });
+        navigate('/jobs');
       }
     } catch (error) {
       console.error('Error posting job:', error);
