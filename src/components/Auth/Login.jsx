@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from './context/AuthContext'; // Import AuthContext
+import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,7 +13,11 @@ const Login = () => {
 
   const onSubmit = async ({ email, password }) => {
     try {
-      const response = await login(email, password); // Call AuthContext login function
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}auth/login`, {
+        email,
+        password
+      }); // Call AuthContext login function
+      console.log(response)
       if (response?.data?.accessToken) {
         navigate('/roles'); // Redirect on successful login
       }

@@ -15,11 +15,11 @@ const Signup = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { signup } = useContext(AuthContext);
-  console.log(import.meta.env.VITE_BACKEND_BASE_URL);
+  // console.log(import.meta.env.VITE_BACKEND_BASE_URL);
 
   const onSubmit = async (data) => {
     try {
-      const response = await signup(data)
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}auth/signup`, data)
       console.log(response.data);
       
       if (response?.data) {
