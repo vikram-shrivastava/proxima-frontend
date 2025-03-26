@@ -96,16 +96,19 @@ const EmployerDashboard = () => {
   // Fetch employer profile
   useEffect(() => {
     const dummyProfile = {
-      employerId: 1,
-      companyName: "Tech Innovators Inc.",
-      companyWebsite: "www.techinnovators.com",
+      employerId: 101,
+      companyName: "Infosys Technologies Ltd.",
+      companyWebsite: "www.infosys.com",
       user: {
-        id: 1,
-        name: "John Smith",
-        email: "john.smith@techinnovators.com",
+        id: 101,
+        name: "Amit Sharma",
+        email: "amit.sharma@infosys.com",
         roles: ["ROLE_EMPLOYER"],
       },
     };
+    
+    
+    
     // async function GetProfile(){
     //   const EmployerProfile=await apiClient.get(`${import.meta.env.BASE_URL}/employers/profile/${id}`)
     //   setProfile(EmployerProfile.data)
@@ -127,15 +130,15 @@ const EmployerDashboard = () => {
     // GetJobs()
     const jobTitles = [
       "Software Engineer",
-      "Data Analyst",
-      "Marketing Manager",
+      "Data Scientist",
+      "Marketing Executive",
       "Product Manager",
       "UX/UI Designer",
-      "HR Specialist",
-      "Financial Analyst",
+      "HR Manager",
+      "Chartered Accountant",
       "Customer Support Lead",
-      "Network Administrator",
-      "Sales Executive",
+      "IT Administrator",
+      "Business Development Executive"
     ];
 
     const dummyJobs = Array.from({ length: 10 }, (_, index) => ({

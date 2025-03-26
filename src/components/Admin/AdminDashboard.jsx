@@ -73,19 +73,19 @@ const AdminDashboard = () => {
   useEffect(() => {
     const dummyData = {
       adminId: "ADM001",
-      name: "Sarah Johnson",
+      name: "Rajesh Sharma",
       role: "Senior Administrator",
       department: "User Management",
       recentActivity: [
-        { id: 1, action: "User Approved", timestamp: "2024-01-10 14:30" },
-        { id: 2, action: "Profile Updated", timestamp: "2024-01-10 13:15" },
-        { id: 3, action: "Account Suspended", timestamp: "2024-01-10 11:45" }
+        { id: 1, action: "User Approved", timestamp: "2024-03-10 14:30" },
+        { id: 2, action: "Profile Updated", timestamp: "2024-03-10 13:15" },
+        { id: 3, action: "Account Suspended", timestamp: "2024-03-10 11:45" }
       ],
       metrics: {
-        totalUsers: 1250,
-        activeUsers: 890,
-        pendingApprovals: 25,
-        recentReports: 15
+        totalUsers: 2050,
+        activeUsers: 1650,
+        pendingApprovals: 40,
+        recentReports: 22
       }
     };
 

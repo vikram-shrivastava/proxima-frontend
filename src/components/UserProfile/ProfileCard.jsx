@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, X } from "lucide-react";
 import WalletComponent from "../Wallet/Wallet.jsx";
 import apiClient from "../Auth/ApiClient";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const GradientOrb = ({ className }) => (
   <div className={`absolute rounded-full blur-3xl opacity-20 ${className}`} />
@@ -13,7 +13,7 @@ const Modal = ({ isOpen, onClose, title, children }) => (
   <AnimatePresence>
     {isOpen && (
       <motion.div
-      initial={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
@@ -38,68 +38,79 @@ const Modal = ({ isOpen, onClose, title, children }) => (
   </AnimatePresence>
 );
 
-const RoleModal = ({ isOpen, onClose, role ,id}) => {
+const RoleModal = ({ isOpen, onClose, role, id }) => {
   const [formData, setFormData] = useState({
     expertise: "",
     yearsOfExperience: "",
     companyName: "",
     website: "",
   });
-  console.log("ID:",id);
-  const handleSubmit = async(e) => {
+  console.log("ID:", id);
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    if(role==="mentor"){
+    if (role === "mentor") {
       try {
-          const response = await apiClient.post(`users/request/mentor` , formData);
-          console.log("API Response:", response.data); // Add this for debugging
-          if(response.data){
-            console.log("Mentor added successfully");
-          }
+        const response = await apiClient.post(`users/request/mentor`, formData);
+        console.log("API Response:", response.data); // Add this for debugging
+        if (response.data) {
+          console.log("Mentor added successfully");
+        }
       } catch (error) {
         console.log("Error adding mentor:", error);
       }
-    }
-    else if(role==="employer"){
+    } else if (role === "employer") {
       try {
-          const response = await apiClient.post(`users/request/employer` , formData);
-          console.log("API Response:", response.data); // Add this for debugging
-          if(response.data){
-            console.log("Employer added successfully");
-          }
+        const response = await apiClient.post(
+          `users/request/employer`,
+          formData
+        );
+        console.log("API Response:", response.data); // Add this for debugging
+        if (response.data) {
+          console.log("Employer added successfully");
+        }
       } catch (error) {
-          console.log("Error adding employer:", error);
+        console.log("Error adding employer:", error);
       }
     }
     onClose();
   };
-  
+
   return (
     <Modal
-    isOpen={isOpen}
-    onClose={onClose}
-    title={role === "mentor" ? "Become a Mentor" : "Register as Employer"}
+      isOpen={isOpen}
+      onClose={onClose}
+      title={role === "mentor" ? "Become a Mentor" : "Register as Employer"}
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         {role === "mentor" ? (
           <>
             <div>
-              <label className="block text-sm text-white/60 mb-1">Expertise</label>
+              <label className="block text-sm text-white/60 mb-1">
+                Expertise
+              </label>
               <input
                 type="text"
                 className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-white"
                 value={formData.expertise}
-                onChange={(e) => setFormData({ ...formData, expertise: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, expertise: e.target.value })
+                }
               />
             </div>
             <div>
-              <label className="block text-sm text-white/60 mb-1">Years of Experience</label>
+              <label className="block text-sm text-white/60 mb-1">
+                Years of Experience
+              </label>
               <input
                 type="number"
                 className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-white"
                 value={formData.yearsOfExperience}
                 onChange={(e) =>
-                  setFormData({ ...formData, yearsOfExperience: e.target.value })
+                  setFormData({
+                    ...formData,
+                    yearsOfExperience: e.target.value,
+                  })
                 }
               />
             </div>
@@ -107,21 +118,29 @@ const RoleModal = ({ isOpen, onClose, role ,id}) => {
         ) : (
           <>
             <div>
-              <label className="block text-sm text-white/60 mb-1">Company Name</label>
+              <label className="block text-sm text-white/60 mb-1">
+                Company Name
+              </label>
               <input
                 type="text"
                 className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-white"
                 value={formData.companyName}
-                onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, companyName: e.target.value })
+                }
               />
             </div>
             <div>
-              <label className="block text-sm text-white/60 mb-1">Website</label>
+              <label className="block text-sm text-white/60 mb-1">
+                Website
+              </label>
               <input
                 type="url"
                 className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-white"
                 value={formData.website}
-                onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, website: e.target.value })
+                }
               />
             </div>
           </>
@@ -150,133 +169,135 @@ const UserProfile = () => {
     applicants: [
       {
         applicantId: 1,
-        name: "John Doe",
-        email: "john.doe@example.com",
-        phone: "+1 (555) 123-4567",
-        skills: ["JavaScript", "React", "Node.js", "CSS", "TypeScript", "AWS"],
-        preferredLocations: ["New York", "San Francisco", "Remote"],
+        name: "Rohit Sharma",
+        email: "rohit.sharma@example.com",
+        phone: "+91 98765 11111",
+        skills: [
+          "JavaScript",
+          "React",
+          "Node.js",
+          "TypeScript",
+          "AWS",
+          "MongoDB",
+        ],
+        preferredLocations: ["Mumbai", "Bangalore", "Remote"],
         education: [
           {
-            degree: "Bachelor of Science in Computer Science",
-            institution: "MIT",
-            graduationYear: 2020
-          }
-        ],
-        experience: [
-          {
-            title: "Senior Frontend Developer",
-            company: "Tech Corp",
-            duration: "2020-present"
-          }
-        ],
-        jobApplications: [
-          { 
-            jobId: 1001, 
-            status: "Applied",
-            companyName: "Google",
-            position: "Senior Developer",
-            appliedDate: "2024-01-15"
+            degree: "Bachelor of Technology in Computer Science",
+            institution: "IIT Delhi",
+            graduationYear: 2023,
           },
-          { 
-            jobId: 1003, 
-            status: "Interview Scheduled",
+        ],
+        experience: [],
+        jobApplications: [
+          {
+            jobId: 2001,
+            status: "Applied",
             companyName: "Microsoft",
-            position: "Tech Lead",
-            appliedDate: "2024-01-10"
-          }
+            position: "Software Engineer",
+            appliedDate: "2024-03-10",
+          },
+          {
+            jobId: 2003,
+            status: "Interview Scheduled",
+            companyName: "Amazon",
+            position: "Frontend Developer",
+            appliedDate: "2024-03-05",
+          },
         ],
         user: {
-          name: "John Doe",
-          email: "john.doe@example.com",
-          roles: ["Applicant", "Mentor"],
+          name: "Rohit Sharma",
+          email: "rohit.sharma@example.com",
+          roles: ["Applicant"],
           profilePicture: "/api/placeholder/150/150",
-          joinedDate: "2023-12-01",
-          lastActive: "2024-01-20"
-        }
+          joinedDate: "2024-01-10",
+          lastActive: "2024-03-15",
+        },
       },
       {
         applicantId: 2,
-        name: "Jane Smith",
-        email: "jane.smith@example.com",
-        phone: "+1 (555) 987-6543",
-        skills: ["Python", "Data Analysis", "SQL", "Machine Learning", "TensorFlow", "Scikit-learn"],
-        preferredLocations: ["Austin", "Seattle", "Remote"],
+        name: "Virat Kohli",
+        email: "virat.kohli@example.com",
+        phone: "+91 87654 22222",
+        skills: [
+          "Python",
+          "Data Science",
+          "SQL",
+          "Machine Learning",
+          "TensorFlow",
+          "Scikit-learn",
+        ],
+        preferredLocations: ["Delhi", "Pune", "Remote"],
         education: [
           {
             degree: "Master in Data Science",
-            institution: "Stanford University",
-            graduationYear: 2021
-          }
-        ],
-        experience: [
-          {
-            title: "Data Scientist",
-            company: "AI Solutions Inc",
-            duration: "2021-present"
-          }
-        ],
-        jobApplications: [
-          { 
-            jobId: 1002, 
-            status: "Applied",
-            companyName: "Amazon",
-            position: "Data Scientist",
-            appliedDate: "2024-01-18"
+            institution: "IIM Bangalore",
+            graduationYear: 2023,
           },
-          { 
-            jobId: 1007, 
+        ],
+        experience: [],
+        jobApplications: [
+          {
+            jobId: 2002,
+            status: "Applied",
+            companyName: "Tesla",
+            position: "Data Analyst",
+            appliedDate: "2024-03-12",
+          },
+          {
+            jobId: 2007,
             status: "Rejected",
-            companyName: "Meta",
-            position: "ML Engineer",
-            appliedDate: "2024-01-05"
-          }
+            companyName: "Apple",
+            position: "Machine Learning Engineer",
+            appliedDate: "2024-02-28",
+          },
         ],
         user: {
-          name: "Jane Smith",
-          email: "jane.smith@example.com",
+          name: "Virat Kohli",
+          email: "virat.kohli@example.com",
           roles: ["Applicant"],
           profilePicture: "/api/placeholder/150/150",
-          joinedDate: "2023-11-15",
-          lastActive: "2024-01-21"
-        }
-      }
+          joinedDate: "2023-12-05",
+          lastActive: "2024-03-18",
+        },
+      },
     ],
     mentors: [
       {
         mentorId: 1,
         expertise: "Frontend Development",
-        yearsOfExperience: 8,
-        availability: "20 hours/week",
-        mentees: 5,
-        rating: 4.8
+        yearsOfExperience: 7,
+        availability: "15 hours/week",
+        mentees: 6,
+        rating: 4.7,
       },
       {
         mentorId: 2,
         expertise: "Data Science",
-        yearsOfExperience: 6,
-        availability: "15 hours/week",
-        mentees: 3,
-        rating: 4.9
-      }
+        yearsOfExperience: 5,
+        availability: "12 hours/week",
+        mentees: 4,
+        rating: 4.8,
+      },
     ],
     employers: [
       {
         employerId: 1,
-        companyName: "Tech Corp",
-        website: "https://techcorp.example.com",
-        industry: "Software Development",
-        companySize: "500-1000",
-        locations: ["New York", "San Francisco"]
+        companyName: "Microsoft",
+        website: "https://microsoft.com",
+        industry: "Technology",
+        companySize: "100000+",
+        locations: ["Seattle", "Bangalore", "Hyderabad"],
       },
       {
         employerId: 2,
-        companyName: "AI Solutions Inc",
-        website: "https://aisolutions.example.com",
-        industry: "Artificial Intelligence",
-        companySize: "100-500",
-        locations: ["Austin", "Seattle"]
-      }
-    ]
+        companyName: "Tesla",
+        website: "https://tesla.com",
+        industry: "Automotive & AI",
+        companySize: "80000+",
+        locations: ["California", "Delhi", "Shanghai"],
+      },
+    ],
   };
   
 
@@ -312,11 +333,11 @@ const UserProfile = () => {
   };
 
   const handleMentorRole = () => {
-    navigate('/mentor-profile/');
+    navigate("/mentor-profile/");
   };
 
   const handleEmployerRole = () => {
-    navigate('/employer-profile/');
+    navigate("/employer-profile/");
   };
 
   // Check loading and error states first
@@ -347,56 +368,59 @@ const UserProfile = () => {
   // Destructure with default values for all properties
   // console.log("Profile:", profile); // Add this for debugging
   const {
-    applicantId = '',
+    applicantId = "",
     skills = [],
     preferredLocations = [],
     jobApplications = [],
-    user = {}
+    user = {},
   } = profile || {};
   // console.log("Applicant ID:",applicantId)
-  const { 
-    name = 'No name available',
-    email = 'No email available',
-    roles = []
+  const {
+    name = "No name available",
+    email = "No email available",
+    roles = [],
   } = user || {};
 
   // Add this for debugging
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center relative overflow-hidden p-4 md:p-8">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative overflow-hidden p-6 md:p-12 space-y-8">
+      {/* Gradient Background Orbs */}
       <GradientOrb className="w-96 h-96 bg-purple-500 left-0 top-0" />
       <GradientOrb className="w-96 h-96 bg-blue-500 right-0 bottom-0" />
       <GradientOrb className="w-64 h-64 bg-pink-500 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" />
 
-      <div className="grid grid-row-2 gap-2 mt-20">
-        <div className=" row-span-1">
-          <div className="backdrop-blur-xl bg-gray-900/30 rounded-3xl p-4 md:p-6 shadow-2xl border border-white/20">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 space-y-4 md:space-y-0">
+      {/* Profile Section */}
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Left Section - Profile Info */}
+        <div className="lg:col-span-2 space-y-6">
+          <div className="backdrop-blur-xl bg-gray-900/40 rounded-3xl p-6 shadow-xl border border-white/20">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-6">
               <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Applicant Profile
               </h1>
 
-              <div className="flex items-center space-x-4 w-full md:w-auto">
+              <div className="flex items-center space-x-4">
                 <WalletComponent />
                 <div className="relative">
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 rounded-lg px-4 py-2 transition-colors"
+                    className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 rounded-lg px-4 py-2 transition"
                   >
                     <span>Select Role</span>
                     <ChevronDown size={20} />
                   </button>
                   {isDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-xl border border-white/10 overflow-hidden">
+                    <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-xl border border-white/10">
                       <button
                         onClick={() => handleRoleSelect("mentor")}
-                        className="w-full text-left px-4 py-2 hover:bg-white/10 transition-colors"
+                        className="w-full text-left px-4 py-2 hover:bg-white/10"
                       >
                         Become a Mentor
                       </button>
                       <button
                         onClick={() => handleRoleSelect("employer")}
-                        className="w-full text-left px-4 py-2 hover:bg-white/10 transition-colors"
+                        className="w-full text-left px-4 py-2 hover:bg-white/10"
                       >
                         Register as Employer
                       </button>
@@ -406,94 +430,107 @@ const UserProfile = () => {
               </div>
             </div>
 
+            {/* Profile Details Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                  <h2 className="text-xl font-semibold mb-4">Personal Information</h2>
-                  <div className="space-y-2 flex flex-col justify-start">
-                    <p><span className="text-white/60">Name:</span> {name}</p>
-                    <p><span className="text-white/60">Email:</span> {email}</p>
-                  </div>
-                </div>
-
+              {/* Personal Info */}
+              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                <h2 className="text-xl font-semibold mb-4">
+                  Personal Information
+                </h2>
+                <p>
+                  <span className="text-white/60">Name:</span> {name}
+                </p>
+                <p>
+                  <span className="text-white/60">Email:</span> {email}
+                </p>
               </div>
 
-              <div className="space-y-4">
-                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                  <h2 className="text-xl font-semibold mb-4">Skills</h2>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.length>0 && skills.map((skill, index) => (
+              {/* Skills */}
+              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                <h2 className="text-xl font-semibold mb-4">Skills</h2>
+                <div className="flex flex-wrap gap-2">
+                  {skills.length > 0 ? (
+                    skills.map((skill, index) => (
                       <span
                         key={index}
                         className="bg-white/10 rounded-full px-3 py-1 text-sm"
                       >
                         {skill}
                       </span>
-                    ))}
-                    {skills.length === 0 && <p className="w-full flex justify-center items-center">No skills specified</p>}
-                  </div>
+                    ))
+                  ) : (
+                    <p className="text-center w-full">No skills specified</p>
+                  )}
                 </div>
-                
-                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                  <h2 className="text-xl font-semibold mb-4">Preferred Locations</h2>
-                  <div className="space-y-2">
-                    {preferredLocations.length > 0 ? (
-                      preferredLocations.map((location, index) => (
-                        <p key={index}>{location}</p>
-                      ))
-                    ) : (
-                      <p>No preferred locations specified</p>
-                    )}
-                  </div>
-                </div>
+              </div>
 
-                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                  <h2 className="text-xl font-semibold mb-4">Current Role</h2>
-                  <div className="flex flex-col justify-start">
-                  {roles.map((roleItem, index) => (
-                    <p key={index} className="capitalize">{roleItem || "No role selected"}</p>
-                  ))}
-                  </div>
-                  
-                </div>
+              {/* Preferred Locations */}
+              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                <h2 className="text-xl font-semibold mb-4">
+                  Preferred Locations
+                </h2>
+                {preferredLocations.length > 0 ? (
+                  preferredLocations.map((location, index) => (
+                    <p key={index}>{location}</p>
+                  ))
+                ) : (
+                  <p>No preferred locations specified</p>
+                )}
+              </div>
+
+              {/* Current Role */}
+              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                <h2 className="text-xl font-semibold mb-4">Current Role</h2>
+                {roles.length > 0 ? (
+                  roles.map((role, index) => (
+                    <p key={index} className="capitalize">
+                      {role}
+                    </p>
+                  ))
+                ) : (
+                  <p>No role selected</p>
+                )}
               </div>
             </div>
-
           </div>
         </div>
-        <div className="row-span-1">
-          <div className="backdrop-blur-xl bg-gray-900/30 rounded-3xl p-4 md:p-6 shadow-2xl border border-white/20">
-            <div className="">
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Dashboards
-              </h1>
-              <div className="grid grid-cols-2 gap-8 mt-4">
-                <button className="col-span-1 bg-green-500 hover:bg-green-600 text-white font-bold p-2 rounded-xl shadow-md transition-all duration-300 mb-4" >
-                  <Link to="/employerdashboard">
-                    Employer Dashboard
-                  </Link>
+
+        {/* Right Section - Dashboards */}
+        <div className="space-y-6">
+          <div className="backdrop-blur-xl bg-gray-900/40 rounded-3xl p-6 shadow-xl border border-white/20">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Dashboards
+            </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+              <Link to="/employerdashboard" className="w-full">
+                <button className="w-full bg-green-500 hover:bg-green-600 text-white font-bold text-lg p-3 rounded-lg shadow-md transition-all duration-300">
+                  Employer Dashboard
                 </button>
-                <button className="col-span-1 bg-green-500 hover:bg-green-600 text-white font-bold p-2 rounded-xl shadow-md transition-all duration-300 mb-4" >
-                <Link to="/AdminDashboard">
-                    Admin Dashboard
-                  </Link>
+              </Link>
+
+              <Link to="/AdminDashboard" className="w-full">
+                <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold text-lg p-3 rounded-lg shadow-md transition-all duration-300">
+                  Admin Dashboard
                 </button>
-                <button className="col-span-1 bg-green-500 hover:bg-green-600 text-white font-bold p-2 rounded-xl shadow-md transition-all duration-300 mb-4">
-                  <Link to="/MentorDashboard/">
-                    Mentor Dashboard
-                  </Link>
+              </Link>
+
+              <Link to="/MentorDashboard" className="w-full">
+                <button className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold text-lg p-3 rounded-lg shadow-md transition-all duration-300">
+                  Mentor Dashboard
                 </button>
-                <button className="col-span-1 bg-green-500 hover:bg-green-600 text-white font-bold p-2 rounded-xl shadow-md transition-all duration-300 mb-4">
-                  <Link to="/CollegeDashboard">
-                    College Dashboard
-                  </Link>
+              </Link>
+
+              <Link to="/CollegeDashboard" className="w-full">
+                <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg p-3 rounded-lg shadow-md transition-all duration-300">
+                  College Dashboard
                 </button>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Role Modal */}
       <RoleModal
         isOpen={showRoleModal}
         onClose={() => setShowRoleModal(false)}

@@ -6,58 +6,59 @@ const CollegeDashboard = () => {
   const [expandedStudent, setExpandedStudent] = useState(null);
 
   const collegeProfile = {
-    name: "Innovate Tech University",
-    location: "College Town, State 12345",
-    established: 1985,
-    description: "A leading institution committed to innovative education and technology leadership.",
+    name: "Indian Institute of Technology Delhi",
+    location: "Hauz Khas, New Delhi, India",
+    established: 1961,
+    description: "A premier institution dedicated to excellence in engineering, technology, and innovation.",
     stats: {
-      students: 5200,
-      programs: 42,
-      internshipRate: 87
+      students: 10000,
+      programs: 65,
+      internshipRate: 92
     }
   };
-
+  
   const students = [
     {
-      name: "John Smith",
-      address: "123 University Ave, College Town",
-      email: "john.smith@college.edu",
+      name: "Aarav Mehta",
+      address: "12 IIT Campus Road, Hauz Khas, Delhi",
+      email: "aarav.mehta@iitd.ac.in",
       applications: [
-        { company: "Google", role: "Software Engineer", status: "Under Review" },
-        { company: "Microsoft", role: "Frontend Developer", status: "Interview" },
-        { company: "Amazon", role: "Full Stack Developer", status: "Applied" }
+        { company: "TCS", role: "Software Engineer", status: "Under Review" },
+        { company: "Infosys", role: "Frontend Developer", status: "Interview" },
+        { company: "Wipro", role: "Full Stack Developer", status: "Applied" }
       ]
     },
     {
-      name: "Emma Wilson",
-      address: "456 Campus Drive, College Town",
-      email: "emma.w@college.edu",
+      name: "Ishita Sharma",
+      address: "45 Knowledge Park, Noida, Uttar Pradesh",
+      email: "ishita.sharma@iitd.ac.in",
       applications: [
-        { company: "Meta", role: "Data Scientist", status: "Rejected" },
-        { company: "Netflix", role: "Data Analyst", status: "Accepted" },
-        { company: "Apple", role: "ML Engineer", status: "Interview" }
+        { company: "Reliance Jio", role: "Data Scientist", status: "Rejected" },
+        { company: "Flipkart", role: "Data Analyst", status: "Accepted" },
+        { company: "Paytm", role: "ML Engineer", status: "Interview" }
       ]
     },
     {
-      name: "Michael Chen",
-      address: "789 Student Lane, College Town",
-      email: "m.chen@college.edu",
+      name: "Rohan Iyer",
+      address: "67 Tech Street, Bengaluru, Karnataka",
+      email: "rohan.iyer@iitd.ac.in",
       applications: [
-        { company: "Adobe", role: "UX Designer", status: "Interview" },
-        { company: "Figma", role: "Product Designer", status: "Applied" }
+        { company: "Zomato", role: "UX Designer", status: "Interview" },
+        { company: "Swiggy", role: "Product Designer", status: "Applied" }
       ]
     },
     {
-      name: "Sarah Johnson",
-      address: "321 College Blvd, College Town",
-      email: "sarah.j@college.edu",
+      name: "Sneha Verma",
+      address: "89 University Road, Pune, Maharashtra",
+      email: "sneha.verma@iitd.ac.in",
       applications: [
-        { company: "Twitter", role: "Backend Developer", status: "Applied" },
-        { company: "LinkedIn", role: "Software Engineer", status: "Under Review" },
-        { company: "Salesforce", role: "Cloud Engineer", status: "Interview" }
+        { company: "Mahindra", role: "Backend Developer", status: "Applied" },
+        { company: "HCL", role: "Software Engineer", status: "Under Review" },
+        { company: "L&T", role: "Cloud Engineer", status: "Interview" }
       ]
     }
   ];
+  
 
   const getStatusColor = (status) => {
     const colors = {
