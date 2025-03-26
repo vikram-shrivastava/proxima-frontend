@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, MessageSquare, Mail, Phone, Video, Send, MoreVertical, X } from 'lucide-react';
+
 const ChatMessages = () => {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
@@ -7,29 +8,85 @@ const ChatMessages = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [messageInput, setMessageInput] = useState('');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [currentUser] = useState({ id: 1 });
-  // Dummy data remains the same as your original code
+  const [currentUser] = useState({ id: 1, name: "Virat Kohli" }); // Current user is Virat Kohli
+
+  // Dummy data with Indian cricketers
   const dummyContacts = [
     {
       id: 1,
-      name: "John Doe",
-      role: "Software Developer",
-      lastMessage: "Hey, how's your job search going?",
+      name: "Virat Kohli",
+      role: "Mentor",
+      lastMessage: "any updates ?",
       lastMessageTime: "10:30 AM",
       unreadCount: 2,
       online: true,
     },
-    // ... other contacts
+    {
+      id: 2,
+      name: "Sachin Tendulkar",
+      role: "Employer",
+      lastMessage: "Your resume got selected",
+      lastMessageTime: "10:32 AM",
+      unreadCount: 0,
+      online: true,
+    },
+    {
+      id: 3,
+      name: "MS Dhoni",
+      role: "Friend",
+      lastMessage: "How about TCS ?",
+      lastMessageTime: "9:45 AM",
+      unreadCount: 1,
+      online: false,
+    },
+    {
+      id: 4,
+      name: "Batista Sharma",
+      role: "Friend",
+      lastMessage: "Thinking of starting a cricket academy...",
+      lastMessageTime: "9:40 AM",
+      unreadCount: 0,
+      online: true,
+    }
   ];
 
   const dummyMessages = [
     {
       id: 1,
-      sender: 1,
-      content: "Hey, how's your job search going?",
-      timestamp: "10:30 AM"
+      sender: 1, // Mentee
+      timestamp: "10:30 AM",
+      content: "Hey! Thanks for agreeing to chat with me about my career. I’m feeling a bit lost on what to do next."
     },
-    // ... other messages
+    {
+      id: 2,
+      sender: 2, // Mentor
+      timestamp: "10:32 AM",
+      content: "No problem at all! I’m happy to help. Can you tell me a bit more about where you’re at right now—your job, skills, or what you’re hoping to achieve?"
+    },
+    {
+      id: 3,
+      sender: 1, // Mentee
+      timestamp: "10:33 AM",
+      content: "Sure! I’m currently a junior developer at a small tech company. I like coding, but I’m not sure if I want to stay technical or move into something like project management."
+    },
+    {
+      id: 4,
+      sender: 2, // Mentor
+      timestamp: "10:35 AM",
+      content: "That’s a great place to be—having options! What excites you more: solving technical problems or organizing teams and projects? Maybe think about what parts of your day you enjoy most."
+    },
+    {
+      id: 5,
+      sender: 1, // Mentee
+      timestamp: "10:36 AM",
+      content: "Honestly, I love debugging code, but I also enjoy when I get to lead a small team meeting. It’s tough to choose! How did you decide your career path?"
+    },
+    {
+      id: 6,
+      sender: 2, // Mentor
+      timestamp: "10:38 AM",
+      content: "For me, it was trial and error. I started in tech, then shifted to management because I loved mentoring people like you! You could try a hybrid role—like a tech lead—to test both sides. What do you think about that?"
+    },
   ];
 
   useEffect(() => {
@@ -55,7 +112,7 @@ const ChatMessages = () => {
       timestamp: new Date().toLocaleTimeString([], { 
         hour: '2-digit', 
         minute: '2-digit' 
-      })
+      }),
     };
 
     setMessages([...messages, newMessage]);
@@ -63,7 +120,7 @@ const ChatMessages = () => {
   };
 
   return (
-    <div className="h-[545px] w-full bg-gradient-to-br from-emerald-900 via-gray-900 to-emerald-900 p-4 mt-0">
+    <div className="h-[675px] w-full bg-gradient-to-br from-emerald-900 via-gray-900 to-emerald-900 p-4 mt-0">
       <div className="h-full w-full mx-auto bg-gray-900/40 backdrop-blur-xl rounded-2xl overflow-hidden border border-emerald-700/30 shadow-2xl flex">
         {/* Mobile Menu Button */}
         <button 

@@ -66,7 +66,7 @@ const JobBoard = () => {
       jobTitle: "Software Engineer",
       description: "Develop and maintain software applications for various platforms.",
       skillsRequired: ["Java", "Python", "C++", "Problem Solving"],
-      company: "Tech Innovations Inc.",
+      company: "Tech Bharat Innovations",
       status: "Open"
     },
     {
@@ -74,7 +74,7 @@ const JobBoard = () => {
       jobTitle: "Data Analyst",
       description: "Analyze large datasets to extract actionable insights for decision making.",
       skillsRequired: ["SQL", "Excel", "Python", "Data Visualization"],
-      company: "DataTech Solutions",
+      company: "DataPrabhu Solutions",
       status: "Closed"
     },
     {
@@ -82,7 +82,7 @@ const JobBoard = () => {
       jobTitle: "Marketing Manager",
       description: "Create and implement marketing strategies to promote products and services.",
       skillsRequired: ["SEO", "Content Marketing", "Google Analytics"],
-      company: "Global Marketing LLC",
+      company: "Global Bharat Marketing",
       status: "Open"
     },
     {
@@ -90,7 +90,7 @@ const JobBoard = () => {
       jobTitle: "Product Manager",
       description: "Oversee the development of new products from concept to launch.",
       skillsRequired: ["Project Management", "Agile", "Communication"],
-      company: "Innovate Products Co.",
+      company: "Niti Innovate Co.",
       status: "Open"
     },
     {
@@ -98,7 +98,7 @@ const JobBoard = () => {
       jobTitle: "UX/UI Designer",
       description: "Design user-friendly interfaces for websites and mobile apps.",
       skillsRequired: ["Adobe XD", "Figma", "HTML/CSS", "User Research"],
-      company: "DesignStudio Pro",
+      company: "DesignSutra Pro",
       status: "Interview"
     },
     {
@@ -106,7 +106,7 @@ const JobBoard = () => {
       jobTitle: "HR Specialist",
       description: "Manage recruitment, employee relations, and benefits administration.",
       skillsRequired: ["HR Software", "Communication", "Conflict Resolution"],
-      company: "PeopleFirst Inc.",
+      company: "JanSeva Inc.",
       status: "Closed"
     },
     {
@@ -114,7 +114,7 @@ const JobBoard = () => {
       jobTitle: "Financial Analyst",
       description: "Analyze financial data, prepare reports, and advise on investment decisions.",
       skillsRequired: ["Excel", "Financial Modeling", "Accounting"],
-      company: "FinSolutions Corp.",
+      company: "Artha Solutions Pvt. Ltd.",
       status: "Open"
     },
     {
@@ -122,7 +122,7 @@ const JobBoard = () => {
       jobTitle: "Customer Support Lead",
       description: "Oversee customer service team and ensure customer satisfaction.",
       skillsRequired: ["Communication", "Problem Solving", "CRM Tools"],
-      company: "ServicePlus Ltd.",
+      company: "SevaPlus Ltd.",
       status: "Open"
     },
     {
@@ -130,7 +130,7 @@ const JobBoard = () => {
       jobTitle: "Network Administrator",
       description: "Manage and maintain network systems and infrastructure.",
       skillsRequired: ["Networking", "VPNs", "Troubleshooting"],
-      company: "NetSecure Inc.",
+      company: "NetSuraksha Inc.",
       status: "Open"
     },
     {
@@ -138,7 +138,7 @@ const JobBoard = () => {
       jobTitle: "Sales Executive",
       description: "Drive sales strategies, manage client relationships, and close deals.",
       skillsRequired: ["Negotiation", "CRM", "Presentation Skills"],
-      company: "SalesForce Global",
+      company: "Vikray Bharat Global",
       status: "Closed"
     }
   ];
