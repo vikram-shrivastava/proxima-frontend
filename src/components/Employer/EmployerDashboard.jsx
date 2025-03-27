@@ -32,7 +32,7 @@ const StatusBadge = ({ status }) => {
     ACTIVE: "bg-green-500/20 text-green-500 border-green-500/20",
     CLOSED_JOB: "bg-gray-500/20 text-gray-500 border-gray-500/20",
     DRAFT: "bg-emerald-500/20 text-emerald-500 border-emerald-500/20",
-  };
+};
 
   return (
     <span
@@ -171,6 +171,15 @@ const EmployerDashboard = () => {
     );
     // const Applications=await apiClient.get(`employers/jobs/${job.id}/applications`)
     // setApplications(Applications.data);
+    const Applications = [ 
+      { id: 1, applicantName: "Arjun Mehta", status: "SHORTLISTED" }, // Selected for further process
+      { id: 2, applicantName: "Sneha Iyer", status: "REJECTED" },     // Not selected
+      { id: 3, applicantName: "Vikram Singh", status: "SHORTLISTED" }, // Selected for further process
+      { id: 4, applicantName: "Pooja Deshmukh", status: "REJECTED" },  // Not selected
+  ];
+  
+  // Set the dummy data in state
+  setApplications(Applications);
     setIsApplicationsModalOpen(true);
   };
 
