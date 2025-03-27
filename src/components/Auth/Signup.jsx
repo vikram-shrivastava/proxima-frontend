@@ -80,7 +80,7 @@ const Signup = () => {
                 </motion.p>
               )}
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <form onSubmit={()=>navigate('/login')} className="space-y-6">
                 <div className="space-y-2">
                   <label className="text-gray-300 text-sm font-medium">Full Name</label>
                   <input

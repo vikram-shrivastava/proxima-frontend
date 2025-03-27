@@ -1,4 +1,6 @@
+/* eslint-disable no-useless-catch */
 import React, { createContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import apiClient from '../ApiClient';
 import axios from 'axios';
 
@@ -45,10 +47,13 @@ export const AuthProvider = ({ children }) => {
     logout,
     signup
   };
-
   return (
     <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

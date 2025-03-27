@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Layout from "./components/Layout/Layout.jsx"; 
@@ -8,7 +7,6 @@ import Signup from "./components/Auth/Signup.jsx";
 import Login from "./components/Auth/Login.jsx";
 import AdminDashboard from "./components/Admin/AdminDashboard.jsx";
 import AnonymousForum from "./components/AnonymousForum/AnonymousForum.jsx";
-import Protected from "./components/Auth/Protected.jsx"
 import Home from "./components/Home/Home.jsx";
 import MentorSearchPage from "./components/mentor/MentorSearchPage.jsx";
 import MentorProfile from "./components/mentor/MentorProfile.jsx";

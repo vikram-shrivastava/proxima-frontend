@@ -8,7 +8,7 @@ export default function ModernNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isInteractionOpen, setIsInteractionOpen] = useState(false);
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   const navigate = useNavigate();
 
   useEffect(() => {

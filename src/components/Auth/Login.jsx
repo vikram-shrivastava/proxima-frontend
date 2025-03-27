@@ -74,7 +74,7 @@ const Login = () => {
                 </motion.p>
               )}
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <form onSubmit={()=>navigate('/')} className="space-y-6">
                 <div className="space-y-2">
                   <label className="text-gray-300 text-sm font-medium">Email</label>
                   <input

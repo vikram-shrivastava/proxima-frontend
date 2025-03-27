@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Plus, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import apiClient from '../Auth/ApiClient';
 
+
+
 const JobApplicationForm = () => {
+  const navigate = useNavigate();
   const [skills, setSkills] = useState([]);
   const [currentSkill, setCurrentSkill] = useState('');
   const [locations, setLocations] = useState([]);
@@ -109,7 +113,7 @@ const JobApplicationForm = () => {
           Job Application
         </motion.h1>
         
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-6" onSubmit={()=>navigate('/exam')}>
           {/* Resume Upload */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
